@@ -12,15 +12,15 @@ export const AuthLayout = ({children}) => {
   const authContext = React.useMemo(() => {
     return {
       signIn: () => {
-        console.log('works')
+        console.log('sign in')
         setIsLoading(false);
         setIsLogged(true);
       },
       signUp: () => {
         setIsLoading(false);
-        setUserToken("asdf");
       },
       signOut: () => {
+        console.log('sign out')
         setIsLoading(false);
         setIsLogged(false);
       }
