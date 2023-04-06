@@ -1,17 +1,18 @@
 
 
-import React from "react";
+import React, {useState, createContext} from "react";
 
-export const AuthContext = React.createContext();
+export const AuthContext = createContext();
 
 
 export const AuthLayout = ({children}) => {
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [isLogged , setIsLogged] = React.useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLogged , setIsLogged] = useState(false);
 
   const authContext = React.useMemo(() => {
     return {
       signIn: () => {
+        console.log('works')
         setIsLoading(false);
         setIsLogged(true);
       },
@@ -37,7 +38,7 @@ export const AuthLayout = ({children}) => {
   // }
 
   return (
-    <AuthContext.Provider value={{isLogged}}>
+    <AuthContext.Provider value={{isLogged, authContext}}>
         {children}
     </AuthContext.Provider>
   );
